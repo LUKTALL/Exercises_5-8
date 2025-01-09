@@ -1,4 +1,2 @@
-# Exercises_5-8
-Super cool thing that I don't know how works!
-
-does this work??
+# 34338 course exercises for group 28 :D
+I so know how this git thing works!
