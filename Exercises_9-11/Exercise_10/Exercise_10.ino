@@ -1,36 +1,43 @@
 /*
- * 9a)
- * Datasheet says 0 mV + 10 mV/°C in the range from 2°C-150°C.
- * Thus V_A0 = 10mV*T (where T is the temperature in celcius in the range [2;150])
- * 
- * 9b)
- * This should show the following in the serial monitor:
- * 0°2°4°6°
- * 
- * 9c)
- * print() interprets the input of the function as the data to be sent,
- * while write() interprets it as a single byte to be written to the serial port.
- * 
- * print(176) would print the bytes for 1, 7 and 6. while write(176) would only send the byte represented by the value 176 (in this case "°")
- */
+   10a)
+   Cold: T =< 20
+   Mild: 26 >= T > 20
+   Hot: T > 26
+*/
 
 uint8_t LM35 = A0;
 float T = 0;
+uint8_t red = 8;
+uint8_t yellow = 5;
+uint8_t green = 2;
 
 void setup() {
-  Serial.begin(9600);
+  pinMode(red, OUTPUT); pinMode(yellow, OUTPUT); pinMode(green, OUTPUT);
   pinMode(LM35, INPUT);
+  Serial.begin(9600);
 }
 
 void loop() {
   int adc = analogRead(LM35);
-  T = adc/1023.0 * 5.0 / 0.01;
+  T = adc / 1023.0 * 5.0 / 0.01;
   Serial.print(T, 3);
   Serial.println("°");
+
+  digitalWrite(red, LOW);
+  digitalWrite(yellow, LOW);
+  digitalWrite(green, LOW);
+
+  if (T <= 20) {
+    digitalWrite(green, HIGH);
+  } else if (T >= 26) {
+    digitalWrite(red, HIGH);
+  } else {
+    digitalWrite(yellow, HIGH);
+  }
   delay(200);
 }
 
 /*
- * 9f)
- * It seems to be stable around ~23°C, goes to 28-29°C while being squished with fingers, and drops down to steady state afterwards.
- */
+   9f)
+   It seems to be stable around ~23°C, goes to 28-29°C while being squished with fingers, and drops down to steady state afterwards.
+*/
