@@ -1,9 +1,27 @@
-void setup() {
-  // put your setup code here, to run once:
+/*
+ * 13a)
+ * The address of the data that the pointer is pointing to
+ * 
+ * 13b)
+ * After the first five iterations, the pointer exceeds the values defined in the array,
+ * and just continues to the next address in memory
+ */
+ 
+/* 16c)
+  int var = 2;
+  int *pointer = &var;
+  *pointer = 3;
+ */
 
-}
+/*
+ * 13d)
+ * The code runs through the array, while printing the address of the data in HEX, and
+ * the value of the data. This is done through a pointer, getting the array values with *pointer.
+ */
 
-void loop() {
-  // put your main code here, to run repeatedly:
-
+// 13e)
+void swap(int *pointer_a, int *pointer_b){
+  int a = *pointer_a;
+  *pointer_a = *pointer_b;
+  *pointer_b = a;
 }
