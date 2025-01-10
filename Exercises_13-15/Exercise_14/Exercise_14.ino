@@ -33,7 +33,7 @@ void loop() {
 
 //14e)
 void printAnimal(struct Animal A){
-  Serial.println("Name \t Age \t Weight \t Is it a fish? \t Is it alive?");
+  Serial.println("Name\tAge\tWeight\tIs it a fish?\tIs it alive?");
   Serial.print(A.Name);
   Serial.print("\t");
   Serial.print(A.Age);
@@ -41,7 +41,7 @@ void printAnimal(struct Animal A){
   Serial.print(A.Weight);
   Serial.print("\t");
   Serial.print(A.isFish);
-  Serial.print("\t");
+  Serial.print("\t\t");
   Serial.print(A.isAlive);
   Serial.println("\t");
 }
